@@ -1,0 +1,21 @@
+[
+  {
+    "description": "Malicious mimikatz access",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1f3fff",
+    "Expected": "Alert"
+  },
+  {
+    "description": "Defender scan",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "ProcessName": "MsMpEng.exe",
+    "Expected": "Suppressed"
+  },
+  {
+    "description": "Normal process open",
+    "TargetImage": "C:\\Windows\\System32\\notepad.exe",
+    "GrantedAccess": "0x0010",
+    "Expected": "No Alert"
+  }
+]

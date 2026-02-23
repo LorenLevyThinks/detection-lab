@@ -1,0 +1,4 @@
+DeviceProcessEvents
+| where FileName =~ "lsass.exe"
+| where InitiatingProcessFileName !in~ ("MsMpEng.exe", "SenseIR.exe")
+| project Timestamp, DeviceName, InitiatingProcessFileName, AccountName

@@ -1,0 +1,4 @@
+index=wineventlog EventCode=4656 OR EventCode=4663
+| search Object_Name="*\\lsass.exe"
+| search AccessMask="0x1f3fff" OR AccessMask="0x1010"
+| stats count by host, Account_Name, Process_Name
