@@ -1,0 +1,36 @@
+title: Suspicious PowerShell Execution Patterns
+id: D-0002
+status: experimental
+description: Detects potentially malicious PowerShell execution using encoded commands, download cradles, or hidden execution.
+author: Loren Levy
+date: 2026-02-22
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+tags:
+  - attack.execution
+  - attack.t1059.001
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection_encoded:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - '-enc'
+      - '-encodedcommand'
+  selection_download:
+    CommandLine|contains:
+      - 'Invoke-WebRequest'
+      - 'IEX'
+      - 'DownloadString'
+  selection_hidden:
+    CommandLine|contains:
+      - '-windowstyle hidden'
+      - '-nop'
+      - '-noni'
+  condition: selection_encoded or selection_download or selection_hidden
+falsepositives:
+  - Administrative scripts
+  - Automation frameworks
+  - SCCM or deployment tooling
+level: medium

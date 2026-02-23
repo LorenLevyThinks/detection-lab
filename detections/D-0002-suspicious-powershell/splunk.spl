@@ -1,0 +1,4 @@
+index=wineventlog EventCode=4688
+| search New_Process_Name="*\\powershell.exe"
+| search CommandLine="*-enc*" OR CommandLine="*DownloadString*" OR CommandLine="*IEX*" OR CommandLine="*-nop*" OR CommandLine="*windowstyle hidden*"
+| stats count by host, Account_Name, CommandLine
