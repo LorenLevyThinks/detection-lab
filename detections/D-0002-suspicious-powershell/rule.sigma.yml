@@ -1,5 +1,5 @@
 title: Suspicious PowerShell Execution Patterns
-id: D-0002
+id: BadBad-ID
 status: experimental
 description: Detects potentially malicious PowerShell execution using encoded commands, download cradles, or hidden execution.
 author: Loren Levy
